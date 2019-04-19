@@ -162,7 +162,6 @@ function [r] = animate_maze(n, mazefile, animate, export_frames_to_file, fn_pref
     a = gca();
     b = a.data_bounds;
     isoview(b(1,1), b(2,1), b(1,2), b(2,2));
-    pause;
 
     [fb, err] = mopen(mazefile, 'r');
     if (err ~= 0) then
