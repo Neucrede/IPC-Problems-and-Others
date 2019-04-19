@@ -212,6 +212,8 @@ function [r] = animate_maze(n, mazefile, animate, export_frames_to_file, fn_pref
             isoview(b(1,1), b(2,1), b(1,2), b(2,2));
             if (export_frames_to_file == 1) then
                 xs2png(f, msprintf('%s_%d.png', fn_prefix, i));
+            else
+                sleep(100);
             end
         end
 
