@@ -162,6 +162,7 @@ function [r] = animate_maze(n, mazefile, animate, export_frames_to_file, fn_pref
     a = gca();
     b = a.data_bounds;
     isoview(b(1,1), b(2,1), b(1,2), b(2,2));
+    pause;
 
     [fb, err] = mopen(mazefile, 'r');
     if (err ~= 0) then
@@ -205,7 +206,7 @@ function [r] = animate_maze(n, mazefile, animate, export_frames_to_file, fn_pref
 
         if (animate == 1) then
             clf(f);
-            // Highlight current brick.
+            // Highlight the brick being knocked off.
             G(gv_row, gv_col) = 5;
             Matplot(G*10);
             isoview(b(1,1), b(2,1), b(1,2), b(2,2));
@@ -225,12 +226,12 @@ function [r] = animate_maze(n, mazefile, animate, export_frames_to_file, fn_pref
 endfunction
 
 function [r] = plotmaze(n, mazefile)
-    r = animate_maze(n, mazefile, 0);
+    r = animate_maze(n, mazefile, 0, 0, '');
 endfunction
 
 // Generate a square maze pattern.
 //
-function [r, M] = mazegen(n, mazefn, animate)
+function [r, M] = mazegen(n, mazefn)
     // Let `A' be a sparse matrix
     A = spzeros((n+1).^2, (n+1).^2);
 
